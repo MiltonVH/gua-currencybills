@@ -1,0 +1,4 @@
+### Editor ###
+## Vim & Emacs temp files:
+*.sublime-project
+*.sublime-workspace
