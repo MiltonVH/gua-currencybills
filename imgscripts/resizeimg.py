@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 
 
 for i in range(1, 187):
@@ -8,7 +7,7 @@ for i in range(1, 187):
     if cols == 1920:
         aux = cv2.resize(img, None, fx=0.5, fy=0.5)
         dst = cv2.resize(aux, (320, 320))
-    elif cols==1280:
+    elif cols == 1280:
         aux = cv2.resize(img, None, fx=0.5, fy=0.5)
         dst = cv2.resize(aux, (320, 240))
     else:
