@@ -42,30 +42,3 @@ def reziseImage(origin, dest):
 
 
 data = loadImgInfo(odata)
-print(len(data))
-detector = cv2.AKAZE_create()
-# img = cv2.imread('C:/Users/toshiba/Desktop/odata2/cinco_back_o/ima8.jpg')
-# gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-# kp, des = detector.detectAndCompute(gray_img, None)
-
-# res = cv2.drawKeypoints(img, kp, None, color=(
-#     0, 255, 0), flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-# cv2.imshow('res', res)
-
-# while True:
-#     if cv2.waitKey(1) & 0xFF == ord('q'):
-#         break
-# cv2.destroyAllWindows()
-
-
-for i in data:
-    image = cv2.imread(i.path)
-    gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    kp, des = detector.detectAndCompute(gray_img, None)
-
-    if des is None:
-        print(i.path)
-
-# for i in aux2:
-#     path = 'C:\\Users\\toshiba\\Desktop\\odata2\\image_net\\' + i.name
-#     reziseImage(str(i), path)

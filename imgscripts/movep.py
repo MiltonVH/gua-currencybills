@@ -47,10 +47,3 @@ for i in range(len(source)):
     for a in clase:
         b = nouse + dest[i] + '/' + a.split('\\')[-1]
         shutil.move(a, b)
-
-        # for i in a:
-        #     b = random.choice(a)
-        #     fuente = src + 'img' + str(b) + '.jpg'
-        #     destino = dst + 'ima' + str(b) + '.jpg'
-        #     shutil.move(fuente, destino)
-        #     a.remove(b)
