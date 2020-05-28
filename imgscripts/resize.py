@@ -4,7 +4,7 @@ from pathlib import Path
 import cv2
 
 ftrain = Path(Path.cwd().parent.__str__()) / 'train'
-ftest = Path(Path.cwd().parent.__str__()) / 'test'
+fval = Path(Path.cwd().parent.__str__()) / 'val'
 odata = Path(Path.cwd().parent.parent.__str__()) / 'odata'
 
 
@@ -42,3 +42,11 @@ def reziseImage(origin, dest):
 
 
 data = loadImgInfo(odata)
+
+destino = odata / 'diez_an/img'
+
+
+count = 0
+for img in data:
+    reziseImage(img.path, str(destino) + str(count) + '.jpg')
+    count += 1
