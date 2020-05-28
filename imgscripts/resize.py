@@ -43,10 +43,11 @@ def reziseImage(origin, dest):
 
 data = loadImgInfo(odata)
 
-destino = odata / 'diez_an/img'
+destino = odata / 'veinte_rev/img'
 
 
 count = 0
 for img in data:
-    reziseImage(img.path, str(destino) + str(count) + '.jpg')
-    count += 1
+    if img.label == 'web_20_rev':
+        reziseImage(img.path, str(destino) + str(count) + '.jpg')
+        count += 1
