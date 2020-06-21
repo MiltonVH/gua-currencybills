@@ -1,6 +1,8 @@
 
+
 from collections import namedtuple
 from pathlib import Path
+import random
 import cv2
 
 ftrain = Path(Path.cwd().parent.__str__()) / 'train'
@@ -42,11 +44,12 @@ def reziseImage(origin, dest):
 
 
 data = loadImgInfo(odata)
+random.shuffle(data)
 
-destino = odata / 'cinco_rev/img'
+destino = odata / 'cincuenta_rev/img'
 
-count = 0
+count = 1
 for img in data:
-    if img.label == 'web_5_rev':
+    if img.label == 'web_50_rev':
         reziseImage(img.path, str(destino) + str(count) + '.jpg')
         count += 1
