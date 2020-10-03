@@ -46,10 +46,10 @@ def reziseImage(origin, dest):
 data = loadImgInfo(odata)
 random.shuffle(data)
 
-destino = odata / 'cien_rev/img'
+destino = odata / 'doscientos_rev/img'
 
 count = 1
 for img in data:
-    if img.label == 'web_100_rev':
+    if img.label == 'web_200_rev':
         reziseImage(img.path, str(destino) + str(count) + '.jpg')
         count += 1
