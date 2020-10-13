@@ -16,7 +16,7 @@ def loadImgInfo(path):
     imgdata = namedtuple(
         'imgdata', ['path', 'id', 'label'])
 
-    for clases in path.glob('*'):
+    for clases in path.glob('*/*'):
         for img in clases.glob('*'):
             lista.append(imgdata(img.__str__(),
                                  img_id, clases.name))
@@ -26,6 +26,8 @@ def loadImgInfo(path):
 
 def reziseImage(origin, dest):
     img = cv2.imread(origin)
+    if img is None:
+        return None
     rows, cols, d = img.shape
     if rows > cols:
         img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE)
@@ -35,21 +37,29 @@ def reziseImage(origin, dest):
             dst = cv2.resize(aux, (320, 320))
         else:
             dst = cv2.resize(aux, (320, 240))
-    else:
+        cv2.imwrite(dest, dst)
+    elif cols > 224:
         if cols == rows:
             dst = cv2.resize(img, (320, 320))
         else:
             dst = cv2.resize(img, (320, 240))
-    cv2.imwrite(dest, dst)
+        cv2.imwrite(dest, dst)
 
 
-data = loadImgInfo(odata)
+data = loadImgInfo(odata / 'web_a_neg')
 random.shuffle(data)
 
-destino = odata / 'veinte_an/img'
+destino = odata / 'a_neg/img'
+
+# count = 1
+# for img in data:
+#     if img.label == 'web_20_an':
+#         reziseImage(img.path, str(destino) + str(count) + '.jpg')
+#         count += 1
 
 count = 1
-for img in data:
-    if img.label == 'web_20_an':
-        reziseImage(img.path, str(destino) + str(count) + '.jpg')
-        count += 1
+for img in data[:4000]:
+    reziseImage(img.path, str(destino) + str(count) + '.jpg')
+    count += 1
+
+print(data[0])
