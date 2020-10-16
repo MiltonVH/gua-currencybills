@@ -44,16 +44,20 @@ def reziseImage(origin, dest):
         else:
             dst = cv2.resize(img, (320, 240))
         cv2.imwrite(dest, dst)
+    else:
+        dst = img
+        cv2.imwrite(dest, dst)
+
 
 
 data = loadImgInfo(odata)
 random.shuffle(data)
 
-destino = odata / 'a_neg_cel/img'
+destino = odata / 'uno_an/img'
 
 count = 1
 for img in data:
-    if img.label == 'web_a_neg_alt':
+    if img.label == 'web_uno_an':
         reziseImage(img.path, str(destino) + str(count) + '.jpg')
         count += 1
 
@@ -62,4 +66,4 @@ for img in data:
 #     reziseImage(img.path, str(destino) + str(count) + '.jpg')
 #     count += 1
 
-print(data[0])
+#print(data[0])
